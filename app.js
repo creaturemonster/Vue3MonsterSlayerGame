@@ -25,6 +25,11 @@ const app=Vue.createApp({
     attackPlayer(){
       const attackValue=getRandomValue(8,15);
       this.playerHealth -= attackValue;
+    },
+    specialAttackMonster(){
+      const attackValue=getRandomValue(10,25);
+      this.monsterHealth -= attackValue;
+      this.attackPlayer();
     }
   }
 });
