@@ -6,7 +6,8 @@ const app=Vue.createApp({
     return{
       playerHealth:100,
       monsterHealth:100,
-      currentRound:0
+      currentRound:0,
+      winner:null
     };
   },
   computed: {
@@ -46,6 +47,25 @@ const app=Vue.createApp({
         this.playerHealth += healValue;
       }
       this.attackPlayer();
+    }
+  }, watch:{
+    playerHealth(value){
+      if(value <= 0 && this.monsterHealth <= 0){
+        this.winner='draw';
+        //A Draw
+      }else if(value <= 0){
+        //Player lost
+        this.winner='monster';
+      }
+    },
+    monsterHealth(value){
+      if(value <= 0 && this.playerHealth <= 0){
+        //A Draw
+        this.winner='draw';
+      }else if(value <= 0){
+        //Monster lost
+        this.winner='player';
+      }
     }
   }
 });
