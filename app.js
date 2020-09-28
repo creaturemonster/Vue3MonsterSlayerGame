@@ -92,7 +92,7 @@ const app=Vue.createApp({
       this.logMessages.unshift({
         actionBy:who,
         actionType:what,
-        actionValue:valuess
+        actionValue:value
       }
     };
   }
